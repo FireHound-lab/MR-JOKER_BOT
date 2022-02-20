@@ -12,7 +12,7 @@ from mrjoker.services.dk import get_arg
 async def song(client, message):
     message.chat.id
     message.from_user["id"]
-    args = get_arg(message) + " " + "song"
+    args = f'{get_arg(message)} song'
     if args.startswith(" "):
         await message.reply("**Enter song name❗**")
         return ""
@@ -56,7 +56,7 @@ async def fetch(url):
     return data
 
 async def download_song(url):
-    song_name = f"mrjoker.mp3"
+    song_name = 'mrjoker.mp3'
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as resp:
             if resp.status == 200:
@@ -103,13 +103,11 @@ from mrjoker.utils.ut import get_arg
 
 def yt_search(song):
     videosSearch = VideosSearch(song, limit=1)
-    result = videosSearch.result()
-    if not result:
-        return False
-    else:
+    if result := videosSearch.result():
         video_id = result["result"][0]["id"]
-        url = f"https://youtu.be/{video_id}"
-        return url
+        return f"https://youtu.be/{video_id}"
+    else:
+        return False
 
 
 class AioHttp:
@@ -136,7 +134,7 @@ class AioHttp:
 async def song(client, message):
     message.chat.id
     user_id = message.from_user["id"]
-    args = get_arg(message) + " " + "song"
+    args = f'{get_arg(message)} song'
     if args.startswith(" "):
         await message.reply("**Enter a song name.** **Check** `/help`")
         return ""
@@ -260,8 +258,7 @@ async def _(client, message):
         return
 
     song = ""
-    song = Song.find_song(query)
-    if song:
+    if song := Song.find_song(query):
         if song.lyrics:
             reply = song.format()
         else:
@@ -288,9 +285,7 @@ async def _(client, message):
 @pbot.on_message(filters.command(["glyric", "glyrics"]))
 async def lyrics(client, message):
 
-    if r"-" in message.text:
-        pass
-    else:
+    if r"-" not in message.text:
         await message.reply(
             "`Error: please use '-' as divider for <artist> and <song>`\n"
             "eg: `.glyrics Nicki Minaj - Super Bass`"
