@@ -252,15 +252,9 @@ TELEGRAPH_MEDIA_LINKS = ["https://telegra.ph/file/d1838efdafce9fe611d0c.jpg",
 @register(pattern="^/tlogo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
- if event.sender_id == OWNER_ID:
-     pass
- else:
-
-    if not quew:
-       await event.reply('`Please add text to the image.`')
-       return
-    else:
-       pass
+ if event.sender_id != OWNER_ID and not quew:
+  await event.reply('`Please add text to the image.`')
+  return
  pesan = await event.reply('`Processing..`')
  try:
     text = event.pattern_match.group(1)
@@ -296,15 +290,9 @@ async def lego(event):
 @register(pattern="^/ylogo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
- if event.sender_id == OWNER_ID:
-     pass
- else:
-     
-    if not quew:
-       await event.reply('Provide Some Text To Draw!')
-       return
-    else:
-       pass
+ if event.sender_id != OWNER_ID and not quew:
+  await event.reply('Provide Some Text To Draw!')
+  return
  await event.reply('Creating your logo...wait!🤡')
  try:
     text = event.pattern_match.group(1)
@@ -336,15 +324,9 @@ async def lego(event):
 @register(pattern="^/jlogo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
- if event.sender_id == OWNER_ID:
-     pass
- else:
-     
-    if not quew:
-       await event.reply('Provide Some Text To Draw!')
-       return
-    else:
-       pass
+ if event.sender_id != OWNER_ID and not quew:
+  await event.reply('Provide Some Text To Draw!')
+  return
  await event.reply('Creating your logo...wait!🤡')
  try:
     text = event.pattern_match.group(1)
@@ -374,15 +356,9 @@ async def lego(event):
 @register(pattern="^/blogo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
- if event.sender_id == OWNER_ID:
-     pass
- else:
-     
-    if not quew:
-       await event.reply('Provide Some Text To Draw!')
-       return
-    else:
-       pass
+ if event.sender_id != OWNER_ID and not quew:
+  await event.reply('Provide Some Text To Draw!')
+  return
  await event.reply('Creating your logo...wait!🤡')
  try:
     text = event.pattern_match.group(1)
